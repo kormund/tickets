@@ -6,6 +6,7 @@
 }
 
 .filter__label {
+  display: inline-block;
   border: #DFE5EC 1px solid;
   background-color: #FFFFFF;
   font-family: 'Open Sans', sans-serif;
@@ -19,4 +20,5 @@
   text-transform: uppercase;
   color: #4A4A4A;
   user-select: none;
+  width: 135px;
 }

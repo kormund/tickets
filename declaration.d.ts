@@ -8,8 +8,5 @@ declare module '*.scss?inline' {
   const styles: CSSResult
   export default styles
 }
-declare module '*.png'
-declare module '*.jpg'
-declare module '*.jpeg'
+
 declare module '*.svg'
-declare module '*.gif'

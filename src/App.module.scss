@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}

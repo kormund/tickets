@@ -1,14 +1,16 @@
 .filter {
-  border-radius: 3px;
+  border: 1px solid #DFE5EC;
+  border-radius: 5px;
   margin-bottom: 20px;
   cursor: pointer;
+  width: 500px;
 }
 
 input[type=radio] {
   display: none;
 }
 
-input[type="radio"]:checked+label {
+input[type="radio"]:checked + label {
   background-color: #2196F3;
   color: #FFFFFF;
 }
