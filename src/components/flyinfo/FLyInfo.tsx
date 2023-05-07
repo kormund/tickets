@@ -1,8 +1,8 @@
-import styles from './flyinfo.modules.scss'
+import styles from './flyinfo.module.scss'
 
 function FLyInfo() {
   return (
-    <>
+    <div className={styles.wrapper}>
       <div className={styles.info}>
         <span className={styles.header}>{'MOW - HKT'}</span>
         <span className={styles.details}>{'10:45 - 8:00'}</span>
@@ -15,7 +15,7 @@ function FLyInfo() {
         <span className={styles.header}>{'2 пересадки'}</span>
         <span className={styles.details}>{'HKG, JNB'}</span>
       </div>
-    </>
+    </div>
   )
 }
 

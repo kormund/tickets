@@ -8,6 +8,7 @@
   text-transform: uppercase;
 
   color: #A0B0B9;
+  width: 140px;
 }
 
 .details {
@@ -16,11 +17,17 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-
+  width: 140px;
   color: #4A4A4A;
 }
 
 .info {
   display: flex;
   flex-direction: column;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }

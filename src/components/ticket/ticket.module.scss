@@ -6,8 +6,11 @@
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin-bottom: 20px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .header {
@@ -25,4 +28,8 @@
 
     color: #2196F3
   }
+
+}
+.info {
+  margin: 0 0 10px 20px;
 }

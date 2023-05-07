@@ -1,31 +1,28 @@
 import styles from './sidebar.module.scss'
+import { CheckboxType, toggleCheckbox } from '../../store/checkboxesSlice'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
 
 function Sidebar() {
+  const checkboxes = useAppSelector((state) => state.checkboxes.checkboxes)
+  const dispatch = useAppDispatch()
+
   return (
     <div className={styles.checkboxes}>
       <h3 className={styles['checkboxes__header']}>Количество пересадок</h3>
-      <label className={styles['checkboxes__label']}>
-        Всё
-        <input type='checkbox' />
-        <span className={styles.checkmark}></span>
-      </label>
-      <label className={styles['checkboxes__label']}>
-        <input type='checkbox' />
-        <span className={styles.checkmark}></span>
-        Без пересадки
-      </label>
-      <label className={styles['checkboxes__label']}>
-        <input type='checkbox' />
-        <span className={styles.checkmark}></span>1 пересадка
-      </label>
-      <label className={styles['checkboxes__label']}>
-        <input type='checkbox' />
-        <span className={styles.checkmark}></span>2 пересадки
-      </label>
-      <label className={styles['checkboxes__label']}>
-        <input type='checkbox' />
-        <span className={styles.checkmark}></span>3 пересадки
-      </label>
+
+      {checkboxes.map((el: CheckboxType) => {
+        return (
+          <label key={el.id} className={styles['checkboxes__label']}>
+            {el.name}
+            <input
+              type='checkbox'
+              checked={el.active}
+              onChange={() => dispatch(toggleCheckbox(el))}
+            />
+            <span className={styles.checkmark}></span>
+          </label>
+        )
+      })}
     </div>
   )
 }
