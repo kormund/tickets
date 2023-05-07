@@ -24,7 +24,7 @@ export default function ProgressBarWithValueLabel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? 100 : prevProgress + 10))
-    }, 1200)
+    }, 1500)
     return () => {
       clearInterval(timer)
     }

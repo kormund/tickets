@@ -1,4 +1,5 @@
 import Ticket from '../ticket/Ticket'
+import styles from './ticketList.module.scss'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { fetchAllTickets } from '../../store/ticketSlice'
@@ -11,7 +12,7 @@ function TicketList() {
     dispatch(fetchAllTickets())
   }, [dispatch])
 
-  const tickets = useAppSelector((state) => state.ticket.tickets)
+  const { tickets, loadingTickets } = useAppSelector((state) => state.ticket)
 
   const checkboxes = useAppSelector((state) => state.checkboxes.checkboxes)
 
@@ -24,6 +25,9 @@ function TicketList() {
 
   return (
     <>
+      {!sortedTickets.length && loadingTickets === 'succeeded' ? (
+        <div className={styles.text}>Билеты не найдены. Выберите хотя бы один параметр слева</div>
+      ) : null}
       {sortedTickets.map((ticket, index) => {
         return (
           <Ticket
