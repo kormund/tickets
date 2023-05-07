@@ -43,6 +43,7 @@ export default function sortTickets(
   tickets: Ticket[],
   checkboxes: Checkbox[],
   currentFilter: string,
+  howManyToShow: number,
 ): Ticket[] {
   // Filter stops
   const activeStops = checkboxes
@@ -61,17 +62,24 @@ export default function sortTickets(
   )
 
   // Sort tickets based on the current filter
-  return filteredTickets.sort((a, b) => {
-    switch (currentFilter) {
-      case 'Самый дешёвый':
-        return a.price - b.price
-      case 'Самый быстрый':
-        return (
-          a.segments.reduce((acc, segment) => acc + segment.duration, 0) -
-          b.segments.reduce((acc, segment) => acc + segment.duration, 0)
-        )
-      default:
-        return 0
-    }
-  })
+  return filteredTickets
+    .sort((a, b) => {
+      switch (currentFilter) {
+        case 'Самый дешёвый':
+          return a.price - b.price
+        case 'Самый быстрый':
+          return (
+            a.segments.reduce((acc, segment) => acc + segment.duration, 0) -
+            b.segments.reduce((acc, segment) => acc + segment.duration, 0)
+          )
+        default:
+          return (
+            (a.price - b.price) / 2 +
+            (a.segments.reduce((acc, segment) => acc + segment.duration, 0) -
+              b.segments.reduce((acc, segment) => acc + segment.duration, 0)) /
+              2
+          )
+      }
+    })
+    .slice(0, howManyToShow)
 }

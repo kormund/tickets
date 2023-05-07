@@ -18,11 +18,20 @@ function TicketList() {
   const filters = useAppSelector((state) => state.filters)
   const activeFilter = filters.filter((el) => el.active)
 
-  const sortedTickets = sortTickets(tickets, checkboxes, activeFilter[0].name)
-  console.log(sortedTickets)
+  const sortedTickets = sortTickets(tickets, checkboxes, activeFilter[0].name, 5)
+
   return (
     <>
-      <Ticket />
+      {sortedTickets.map((ticket, index) => {
+        return (
+          <Ticket
+            key={index}
+            carrier={ticket.carrier}
+            price={ticket.price}
+            segments={ticket.segments}
+          />
+        )
+      })}
     </>
   )
 }

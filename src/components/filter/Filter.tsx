@@ -11,12 +11,19 @@ type FilterType = {
 function Filter({ name, id, active }: FilterType) {
   const dispatch = useAppDispatch()
   const handleFilterChange = () => {
-    dispatch(selectFilter(name))
+    dispatch(selectFilter(id))
   }
   return (
     <>
-      <input type='radio' name={'filter'} checked={active} id={id} readOnly />
-      <label htmlFor={id} className={styles.filter__label} onChange={handleFilterChange}>
+      <input
+        type='radio'
+        name={'filter'}
+        checked={active}
+        id={id}
+        readOnly
+        onChange={handleFilterChange}
+      />
+      <label htmlFor={id} className={styles.filter__label}>
         {name}
       </label>
     </>
