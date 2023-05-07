@@ -46,6 +46,7 @@ interface TicketState {
   loadingID: 'idle' | 'pending' | 'succeeded' | 'failed'
   loadingTickets: 'idle' | 'pending' | 'succeeded' | 'failed'
   isAllTicketsHere: boolean
+  ticketsToShow: number
 }
 
 interface SearchID {
@@ -58,6 +59,7 @@ const initialState: TicketState = {
   loadingID: 'idle',
   loadingTickets: 'idle',
   isAllTicketsHere: false,
+  ticketsToShow: 5,
 }
 
 export const fetchAllTickets = createAsyncThunk('ticket/fetchAllTickets', async (_, thunkAPI) => {
@@ -120,7 +122,11 @@ export const fetchAllTickets = createAsyncThunk('ticket/fetchAllTickets', async 
 const ticketSlice = createSlice({
   name: 'ticket',
   initialState,
-  reducers: {},
+  reducers: {
+    increaseAmountToShow(state) {
+      state.ticketsToShow += 5
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllTickets.fulfilled, (state, action) => {
       state.loadingTickets = 'succeeded'
@@ -131,4 +137,5 @@ const ticketSlice = createSlice({
   },
 })
 
+export const { increaseAmountToShow } = ticketSlice.actions
 export default ticketSlice.reducer

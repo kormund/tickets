@@ -16,9 +16,11 @@ function TicketList() {
   const checkboxes = useAppSelector((state) => state.checkboxes.checkboxes)
 
   const filters = useAppSelector((state) => state.filters)
+
+  const howManyToShow = useAppSelector((state) => state.ticket.ticketsToShow)
   const activeFilter = filters.filter((el) => el.active)
 
-  const sortedTickets = sortTickets(tickets, checkboxes, activeFilter[0].name, 5)
+  const sortedTickets = sortTickets(tickets, checkboxes, activeFilter[0].name, howManyToShow)
 
   return (
     <>
