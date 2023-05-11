@@ -22,21 +22,21 @@ function FlyInfo({ origin, date, duration, stops, destination }: FlyInfoType) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.info}>
-        <span className={styles.header}>{`${origin} - ${destination}`}</span>
-        <span
+        <div className={styles.header}>{`${origin} - ${destination}`}</div>
+        <div
           className={styles.details}
         >{`${time.getHours()}:${time.getMinutes()} - ${destinationTime.getHours()}:${destinationTime
           .getMinutes()
           .toString()
-          .padStart(2, '0')}`}</span>
+          .padStart(2, '0')}`}</div>
       </div>
       <div className={styles.info}>
-        <span className={styles.header}>{'В пути'}</span>
-        <span className={styles.details}>{getHoursAndMinutes(duration)}</span>
+        <div className={styles.header}>{'В пути'}</div>
+        <div className={styles.details}>{getHoursAndMinutes(duration)}</div>
       </div>
       <div className={styles.info}>
-        <span className={styles.header}>{formatStops(stops)}</span>
-        <span className={styles.details}>{stops.join(', ') || ''}</span>
+        <div className={styles.header}>{formatStops(stops.length)}</div>
+        <div className={styles.details}>{stops.join(', ') || ''}</div>
       </div>
     </div>
   )

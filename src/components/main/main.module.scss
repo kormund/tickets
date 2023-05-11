@@ -1,29 +1,5 @@
 .main {
   display: flex;
   flex-direction: column;
-
-  &__btn {
-    width: 500px;
-    margin-top: 20px;
-    padding: 15px 20px;
-    background-color: #2196F3;
-    border: none;
-    border-radius: 5px;
-
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 20px;
-
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-
-    color: #FFFFFF;
-    margin-bottom: 50px;
-    
-    &:hover {
-      cursor: pointer;
-    }
-  }
+  width: fit-content;
 }

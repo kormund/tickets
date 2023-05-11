@@ -2,7 +2,7 @@ import Ticket from '../ticket/Ticket'
 import styles from './ticketList.module.scss'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { fetchAllTickets } from '../../store/ticketSlice'
+import { fetchAllTickets, increaseAmountToShow } from '../../store/ticketSlice'
 import sortTickets from '../../utility/sortTickets'
 
 function TicketList() {
@@ -11,6 +11,10 @@ function TicketList() {
   useEffect(() => {
     dispatch(fetchAllTickets())
   }, [dispatch])
+
+  const handleShowMore = () => {
+    dispatch(increaseAmountToShow())
+  }
 
   const { tickets, loadingTickets } = useAppSelector((state) => state.ticket)
 
@@ -38,6 +42,9 @@ function TicketList() {
           />
         )
       })}
+      <button className={styles.btn} onClick={handleShowMore}>
+        Показать еще 5 билетов
+      </button>
     </>
   )
 }

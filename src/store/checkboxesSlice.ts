@@ -25,24 +25,24 @@ const checkboxSlice = createSlice({
         state.checkboxes.forEach((el) => {
           el.active = !allOtherCheckboxesActive
         })
-      } else {
-        state.checkboxes.forEach((el, index) => {
-          if (clickedName === el.name) {
-            el.active = !el.active
-          }
+        return
+      }
 
-          if (index !== 0 && !el.active) {
-            state.checkboxes[0].active = false
-          }
-        })
+      let allActive = true
 
-        const allOtherCheckboxesActive = state.checkboxes
-          .slice(1)
-          .every((checkbox) => checkbox.active)
-
-        if (allOtherCheckboxesActive) {
-          state.checkboxes[0].active = true
+      state.checkboxes.forEach((el, index) => {
+        if (clickedName === el.name) {
+          el.active = !el.active
         }
+
+        if (index !== 0 && !el.active) {
+          allActive = false
+          state.checkboxes[0].active = false
+        }
+      })
+
+      if (allActive) {
+        state.checkboxes[0].active = true
       }
     },
   },
